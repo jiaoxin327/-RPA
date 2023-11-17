@@ -1,0 +1,20 @@
+# port
+server:
+  port: 8090
+spring:
+  datasource:
+    druid:
+      # 基本属性
+      url: jdbc:sqlite::resource:sqlite/rpa_test.db
+      username:
+      password:
+
+# logger
+logging:
+  config: classpath:logback-test.xml
+
+# 开启 knife4j
+knife4j:
+  enable: true
+
+

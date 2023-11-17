@@ -1,0 +1,77 @@
+server:
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    context-path: /rpa-super-api
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# setting encode
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid
+    druid:
+      # 监控统计拦截的filters
+      filters: stat
+      # 配置初始化大小/最小/最大
+      initial-size: 20
+      min-idle: 20
+      max-active: 100
+      # 获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      # 一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  #设置编码
+  profiles:
+    active: @activatedProperties@
+  application:
+    name: rpa-super-api
+
+## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  # 注意：对应实体类的路径
+  type-aliases-package: com.zhuisuyun.net.rpaparent.entity
+  configuration:
+    # 驼峰映射
+    map-underscore-to-camel-case: true
+    # 打印执行的sql
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j官方文档
+    description: 本地环境接口文档
+    email:
+    concat:
+    url:
+    version: v4.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      test1:
+        group-name: 分组名称
+        api-rule: package
+        api-rule-resources:
+          - com.zhuisuyun.net.rpaparent
+

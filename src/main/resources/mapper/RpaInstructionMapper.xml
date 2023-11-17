@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuisuyun.net.rpaparent.dao.RpaInstructionMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuisuyun.net.rpaparent.entity.RpaInstruction">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="instructName" column="instruct_name" jdbcType="VARCHAR"/>
+            <result property="instructDescribe" column="instruct_describe" jdbcType="VARCHAR"/>
+            <result property="instructSimplify" column="instruct_simplify" jdbcType="VARCHAR"/>
+            <result property="instructIllustrate" column="instruct_illustrate" jdbcType="VARCHAR"/>
+            <result property="instructLibrary" column="instruct_library" jdbcType="VARCHAR"/>
+            <result property="instructGroup" column="instruct_group" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,instruct_name,instruct_describe,
+        instruct_simplify,instruct_illustrate,instruct_library,
+        instruct_group,status
+    </sql>
+</mapper>
